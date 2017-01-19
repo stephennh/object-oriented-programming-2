@@ -5,7 +5,7 @@ class System
   attr_reader :bodies
 
   # bodies start as an empty array
-  def initialize(bodies)
+  def initialize
     @bodies = []
   end
 
@@ -17,8 +17,10 @@ class System
   # adds up the total mass of all the bodies
   def total_mass
     tot_mass = 0
-    @bodies.times do |body|
+    @bodies.each do |body|
       tot_mass += body.mass
+    end
+    return tot_mass
   end
 
 end
@@ -57,6 +59,7 @@ class Star < Body
     @type = type
     if name == "Sun"
       @type = "A big Star"
+    end
   end
 
 end
