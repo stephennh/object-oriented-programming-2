@@ -38,3 +38,7 @@ class Instructor < Person
   end
 
 end
+
+# Calling the teach method on the student instance did not work
+# because the student instance "Chris" was created only in student
+# and not in the instructor method.
