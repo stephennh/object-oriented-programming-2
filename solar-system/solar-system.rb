@@ -11,12 +11,14 @@ class System
 
   # adds celestial body to the list
   def add(planet)
-    @bodies.pop(planet)
+    @bodies.push(planet)
   end
 
   # adds up the total mass of all the bodies
   def total_mass
-    @bodies
+    tot_mass = 0
+    @bodies.times do |body|
+      tot_mass += body.mass
   end
 
 end
@@ -40,8 +42,8 @@ class Planet < Body
 
   def initialize(name, mass, day, year)
     super(name, mass)
-    @day = day
-    @year = year
+    @day = day         # 24 hr
+    @year = year       # 365 days
   end
 
 end
@@ -53,6 +55,8 @@ class Star < Body
   def initialize(name, mass, type)
     super(name, mass)
     @type = type
+    if name == "Sun"
+      @type = "A big Star"
   end
 
 end
@@ -64,7 +68,7 @@ class Moon < Body
   def initialize(name, mass, month, planet)
     super(name, mass)
     @month = month
-    @planet = planet
+    @planet = Planet
   end
 
 end
